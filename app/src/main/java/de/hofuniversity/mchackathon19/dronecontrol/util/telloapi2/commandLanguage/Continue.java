@@ -1,6 +1,7 @@
 package de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commandLanguage;
 
-import commands.OwnCommand;
+
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.OwnCommand;
 
 public class Continue extends Command
 {

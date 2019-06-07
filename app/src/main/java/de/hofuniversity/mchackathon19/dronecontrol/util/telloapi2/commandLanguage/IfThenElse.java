@@ -1,7 +1,8 @@
 package de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commandLanguage;
 
 import java.util.List;
-import commands.OwnCommand;
+
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.OwnCommand;
 
 public class IfThenElse extends Statement implements Visitable
 {
