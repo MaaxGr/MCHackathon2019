@@ -17,19 +17,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drone_controller);
 
+        this.droneThread = new DroneThread();
+        droneThread.start();
+
         ImageButton takeOffBtn = findViewById(R.id.btn_takeoff);
         takeOffBtn.setOnClickListener(btn -> {
             Toast.makeText(this, "test", Toast.LENGTH_LONG).show();
-
-            /*
-            this.droneThread = new DroneThread();
-            droneThread.start();
-            */
-
-            /*
             System.out.println("Start test");
             droneThread.executeCommand("start");
-            */
         });
 
         View landBtn = findViewById(R.id.btn_land);

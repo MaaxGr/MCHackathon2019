@@ -28,6 +28,7 @@ public class DroneThread extends Thread {
         telloWorld.enterCommandMode();
         System.out.println("entered command mode");
 
+
         telloWorld.takeOff();
 
         try {
