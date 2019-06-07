@@ -47,6 +47,8 @@ public class TelloWorldImpl implements TelloWorld {
     boolean executionSuccessful = telloCommunication.executeCommand(command);
     if (executionSuccessful) {
       logger.info("Entering command mode successful");
+    } else {
+      logger.info("Error entering command mode");
     }
   }
 

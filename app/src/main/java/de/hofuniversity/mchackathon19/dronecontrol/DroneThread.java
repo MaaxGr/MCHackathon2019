@@ -1,18 +1,26 @@
 package de.hofuniversity.mchackathon19.dronecontrol;
 
-import java.util.concurrent.SynchronousQueue;
+import android.util.Log;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi.world.TelloWorld;
 import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi.world.TelloWorldImpl;
 
 public class DroneThread extends Thread {
 
-    private SynchronousQueue<String> commandQueue = new SynchronousQueue<>();
-    private TelloWorld telloWorld = new TelloWorldImpl();
-    private boolean stop = false;
+    private Queue<String> commandQueue;
+    private TelloWorld telloWorld;
+    private boolean stop;
 
     @Override
     public void run() {
+        commandQueue = new LinkedList<>();
+        telloWorld = new TelloWorldImpl();
+        stop = false;
+
+        Log.d("App", "start thread");
 
         telloWorld.connect();
         System.out.println("connected");
@@ -20,11 +28,30 @@ public class DroneThread extends Thread {
         telloWorld.enterCommandMode();
         System.out.println("entered command mode");
 
+        telloWorld.takeOff();
+
+        try {
+            sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        telloWorld.land();
+
+
+        /*
         while (!stop) {
+
+            Log.d("App", "Searching for commands");
+
 
             if (!commandQueue.isEmpty()) {
 
-                switch (commandQueue.poll()) {
+                String command = commandQueue.poll();
+
+                Log.d("App", "Found command: " + command);
+
+                switch (command) {
                     case "start":
                         telloWorld.takeOff();
                         System.out.println("start");
@@ -38,6 +65,9 @@ public class DroneThread extends Thread {
                         telloWorld.disconnect();
                         stop = true;
                         break;
+
+                        default:
+                            Log.d("App", "Malformed command");
                 }
             }
 
@@ -47,17 +77,15 @@ public class DroneThread extends Thread {
                 e.printStackTrace();
             }
         }
+        */
 
     }
 
     public void executeCommand(String command) {
-        try {
-            commandQueue.put(command);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
+        System.out.println("command: " + command);
 
+        commandQueue.add(command);
+    }
 
 
 }
