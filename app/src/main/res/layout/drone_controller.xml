@@ -10,8 +10,6 @@
         android:id="@+id/ll_top_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
         android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:orientation="horizontal"
@@ -22,62 +20,83 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/grey"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:src="@drawable/ic_file_upload_black_24dp"
-            tools:ignore="ContentDescription"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"/>
-
-        <ImageButton
-            android:id="@+id/btn_emergency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/attentionRed"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:src="@drawable/ic_warning_black_24dp"
             tools:ignore="ContentDescription" />
 
-        <ImageButton
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:id="@+id/btn_land"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/grey"
-            android:src="@drawable/ic_file_download_black_24dp"
-            tools:ignore="ContentDescription" />
+            android:layout_gravity="left"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/attentionRed"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_warning_black_24dp"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_land"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/grey"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:src="@drawable/ic_file_download_black_24dp"
+                tools:ignore="ContentDescription" />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_controls"
+    <RelativeLayout
+        android:id="@+id/vw_camera_stream"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
-        app:layout_constraintTop_toTopOf="@id/ll_top_bar">
+        app:layout_constraintTop_toBottomOf="@id/ll_top_bar">
 
-        <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
-            custom:JV_backgroundColor="#333333"
-            custom:JV_borderColor="#111111"
-            custom:JV_borderWidth="4dp"
-            custom:JV_buttonColor="@color/colorPrimaryDark"
-            custom:JV_buttonSizeRatio="15%"
-            custom:JV_fixedCenter="false" />
-        <io.github.controlwear.virtual.joystick.android.JoystickView
-            android:layout_gravity="right|center"
-            xmlns:custom="http://schemas.android.com/apk/res-auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            custom:JV_buttonColor="@color/colorPrimaryDark"
-            custom:JV_buttonSizeRatio="15%"
-            custom:JV_borderColor="#111111"
-            custom:JV_backgroundColor="#333333"
-            custom:JV_borderWidth="4dp"
-            custom:JV_fixedCenter="false"/>
-    </LinearLayout>
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:JV_backgroundColor="#88333333"
+        custom:JV_borderColor="#88111111"
+        custom:JV_borderWidth="@dimen/joystick_border_width"
+        custom:JV_buttonColor="@color/colorPrimaryDark"
+        custom:JV_buttonSizeRatio="15%"
+        custom:JV_fixedCenter="false"
+        custom:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
+        custom:layout_constraintLeft_toLeftOf="parent"
+        custom:layout_constraintTop_toBottomOf="@id/ll_top_bar" />
+
+    <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:JV_backgroundColor="#88333333"
+        custom:JV_borderColor="#88111111"
+        custom:JV_borderWidth="@dimen/joystick_border_width"
+        custom:JV_buttonColor="@color/colorPrimaryDark"
+        custom:JV_buttonSizeRatio="15%"
+        custom:JV_fixedCenter="false"
+        custom:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
+        custom:layout_constraintRight_toRightOf="parent"
+        custom:layout_constraintTop_toBottomOf="@id/ll_top_bar" />
 
     <LinearLayout
         android:id="@+id/ll_bottom_bar"
