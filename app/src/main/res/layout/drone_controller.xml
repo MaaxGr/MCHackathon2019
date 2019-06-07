@@ -29,7 +29,8 @@
             android:src="@drawable/ic_warning_black_24dp"
             tools:ignore="ContentDescription"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp"/>
+            android:paddingRight="16dp"
+            android:background="@color/attentionRed"/>
         <ImageButton
             android:id="@+id/btn_land"
             android:layout_width="wrap_content"
