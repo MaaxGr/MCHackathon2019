@@ -20,7 +20,6 @@ import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.droneControl.D
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -35,14 +34,6 @@ public class MainActivity extends AppCompatActivity {
         new DroneThread2(this).start();
 
 
-        emergencyBtn.setOnClickListener(btn -> new Thread() {
-            @Override
-            public void run() {
-                DroneControl DrCo = new DroneControl();
-                DrCo.sendCommand(new BatteryQM());
-                super.run();
-            }
-        }.start());
 
 
         //takeOffBtn.setOnClickListener(btn -> droneThread2.executeCommand("start"));
@@ -52,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 DroneControl DrCo = new DroneControl();
                 DrCo.sendCommand(new Takeoff());
+
+                //test: battery
+                DrCo.sendCommand(new BatteryQM());
                 super.run();
             }
         }.start());

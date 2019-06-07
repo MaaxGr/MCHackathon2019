@@ -60,7 +60,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--<RelativeLayout
+    <RelativeLayout
         android:id="@+id/vw_camera_stream"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -72,32 +72,39 @@
             android:layout_height="match_parent" />
     </RelativeLayout>
 
+
+    <android.support.constraint.ConstraintLayout
+        app:layout_constraintTop_toTopOf="@id/ll_top_bar"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
     <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         custom:JV_backgroundColor="#88333333"
         custom:JV_borderColor="#88111111"
         custom:JV_borderWidth="@dimen/joystick_border_width"
         custom:JV_buttonColor="@color/colorPrimaryDark"
         custom:JV_buttonSizeRatio="15%"
-        custom:JV_fixedCenter="false"
-        custom:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
+        custom:JV_fixedCenter="true"
+        custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintLeft_toLeftOf="parent"
-        custom:layout_constraintTop_toBottomOf="@id/ll_top_bar" />
+        custom:layout_constraintTop_toTopOf="parent" />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         custom:JV_backgroundColor="#88333333"
         custom:JV_borderColor="#88111111"
         custom:JV_borderWidth="@dimen/joystick_border_width"
         custom:JV_buttonColor="@color/colorPrimaryDark"
         custom:JV_buttonSizeRatio="15%"
-        custom:JV_fixedCenter="false"
-        custom:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
+        custom:JV_fixedCenter="true"
+        custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintRight_toRightOf="parent"
-        custom:layout_constraintTop_toBottomOf="@id/ll_top_bar" />
--->
+        custom:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
     <LinearLayout
         android:id="@+id/ll_bottom_bar"
         android:layout_width="match_parent"
