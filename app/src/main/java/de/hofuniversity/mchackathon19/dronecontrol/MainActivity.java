@@ -8,6 +8,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
+
 import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.BatteryQM;
 import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.Emergency;
 import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.Land;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         ImageButton takeOffBtn = findViewById(R.id.btn_takeoff);
         TextView txtBat = findViewById(R.id.tv_battery);
 
+        new DroneThread2(this).start();
+
 
         emergencyBtn.setOnClickListener(btn -> new Thread() {
             @Override
@@ -40,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start());
 
+
+        //takeOffBtn.setOnClickListener(btn -> droneThread2.executeCommand("start"));
+        /*
         takeOffBtn.setOnClickListener(btn -> new Thread() {
             @Override
             public void run() {
@@ -48,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
                 super.run();
             }
         }.start());
+        */
 
+        //landBtn.setOnClickListener(btn -> droneThread2.executeCommand("land"));
+
+        /*
         landBtn.setOnClickListener(btn -> new Thread() {
             @Override
             public void run() {
@@ -57,15 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 super.run();
             }
         }.start());
-
-        emergencyBtn.setOnClickListener(btn -> new Thread() {
-            @Override
-            public void run() {
-                DroneControl DrCo = new DroneControl();
-                DrCo.sendCommand(new Emergency());
-                super.run();
-            }
-        }.start());
+        */
     }
 
 }
