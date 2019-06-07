@@ -73,7 +73,7 @@
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
         android:id="@+id/jsLeft"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:JV_backgroundColor="#88333333"
         app:JV_borderColor="#88111111"
@@ -87,7 +87,7 @@
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
         android:id="@+id/jsView"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         app:JV_backgroundColor="#88333333"
         app:JV_borderColor="#88111111"
