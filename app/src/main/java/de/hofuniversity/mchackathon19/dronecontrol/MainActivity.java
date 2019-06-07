@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton takeOffBtn = findViewById(R.id.btn_takeoff);
         TextView txtBat = findViewById(R.id.tv_battery);
 
-        new DroneThread2(this).start();
-
-
+        //new DroneThread2(this).start();
 
 
         //takeOffBtn.setOnClickListener(btn -> droneThread2.executeCommand("start"));

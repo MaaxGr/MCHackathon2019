@@ -66,47 +66,38 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
         app:layout_constraintTop_toBottomOf="@id/ll_top_bar">
-
         <VideoView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </RelativeLayout>
 
-
-    <android.support.constraint.ConstraintLayout
+    <io.github.controlwear.virtual.joystick.android.JoystickView
+        android:id="@+id/jsLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:JV_backgroundColor="#88333333"
+        app:JV_borderColor="#88111111"
+        app:JV_borderWidth="@dimen/joystick_border_width"
+        app:JV_buttonColor="@color/colorPrimaryDark"
+        app:JV_buttonSizeRatio="15%"
+        app:JV_fixedCenter="true"
         app:layout_constraintTop_toBottomOf="@id/ll_top_bar"
-        app:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal">
-
-    <io.github.controlwear.virtual.joystick.android.JoystickView xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        custom:JV_backgroundColor="#88333333"
-        custom:JV_borderColor="#88111111"
-        custom:JV_borderWidth="@dimen/joystick_border_width"
-        custom:JV_buttonColor="@color/colorPrimaryDark"
-        custom:JV_buttonSizeRatio="15%"
-        custom:JV_fixedCenter="true"
-        custom:layout_constraintBottom_toBottomOf="parent"
-        custom:layout_constraintLeft_toLeftOf="parent"
-        custom:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom_bar" />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        custom:JV_backgroundColor="#88333333"
-        custom:JV_borderColor="#88111111"
-        custom:JV_borderWidth="@dimen/joystick_border_width"
-        custom:JV_buttonColor="@color/colorPrimaryDark"
-        custom:JV_buttonSizeRatio="15%"
-        custom:JV_fixedCenter="true"
-        custom:layout_constraintBottom_toBottomOf="parent"
-        custom:layout_constraintRight_toRightOf="parent"
-        custom:layout_constraintTop_toTopOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+        android:id="@+id/jsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:JV_backgroundColor="#88333333"
+        app:JV_borderColor="#88111111"
+        app:JV_borderWidth="@dimen/joystick_border_width"
+        app:JV_buttonColor="@color/colorPrimaryDark"
+        app:JV_buttonSizeRatio="15%"
+        app:JV_fixedCenter="true"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_top_bar" />
 
     <LinearLayout
         android:id="@+id/ll_bottom_bar"
