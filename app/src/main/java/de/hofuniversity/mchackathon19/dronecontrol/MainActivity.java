@@ -5,11 +5,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.BatteryQM;
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.Emergency;
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.Land;
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.OwnCommand;
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.commands.Takeoff;
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.droneControl.DroneCommunication;
+import de.hofuniversity.mchackathon19.dronecontrol.util.telloapi2.droneControl.DroneControl;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DroneThread2 droneThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,21 +25,47 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drone_controller);
 
-        this.droneThread = new DroneThread2();
-        droneThread.start();
-
-        ImageButton takeOffBtn = findViewById(R.id.btn_takeoff);
-        takeOffBtn.setOnClickListener(btn -> {
-            Toast.makeText(this, "test", Toast.LENGTH_LONG).show();
-            System.out.println("Start test");
-            droneThread.executeCommand("start");
-        });
-
         View landBtn = findViewById(R.id.btn_land);
-        landBtn.setOnClickListener(btn -> droneThread.executeCommand("land"));
-
         View emergencyBtn = findViewById(R.id.btn_emergency);
-        emergencyBtn.setOnClickListener(btn -> droneThread.executeCommand("stop"));
+        ImageButton takeOffBtn = findViewById(R.id.btn_takeoff);
+        TextView txtBat = findViewById(R.id.tv_battery);
+
+
+        emergencyBtn.setOnClickListener(btn -> new Thread() {
+            @Override
+            public void run() {
+                DroneControl DrCo = new DroneControl();
+                DrCo.sendCommand(new BatteryQM());
+                super.run();
+            }
+        }.start());
+
+        takeOffBtn.setOnClickListener(btn -> new Thread() {
+            @Override
+            public void run() {
+                DroneControl DrCo = new DroneControl();
+                DrCo.sendCommand(new Takeoff());
+                super.run();
+            }
+        }.start());
+
+        landBtn.setOnClickListener(btn -> new Thread() {
+            @Override
+            public void run() {
+                DroneControl DrCo = new DroneControl();
+                DrCo.sendCommand(new Land());
+                super.run();
+            }
+        }.start());
+
+        emergencyBtn.setOnClickListener(btn -> new Thread() {
+            @Override
+            public void run() {
+                DroneControl DrCo = new DroneControl();
+                DrCo.sendCommand(new Emergency());
+                super.run();
+            }
+        }.start());
     }
 
 }

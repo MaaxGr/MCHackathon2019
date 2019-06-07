@@ -60,7 +60,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:id="@+id/vw_camera_stream"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -97,7 +97,7 @@
         custom:layout_constraintBottom_toTopOf="@id/ll_bottom_bar"
         custom:layout_constraintRight_toRightOf="parent"
         custom:layout_constraintTop_toBottomOf="@id/ll_top_bar" />
-
+-->
     <LinearLayout
         android:id="@+id/ll_bottom_bar"
         android:layout_width="match_parent"

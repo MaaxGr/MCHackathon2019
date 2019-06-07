@@ -47,6 +47,11 @@ public class DroneControl
         ownCommands = new HashMap<String, OwnCommand>();
 
         File ownCommandFolder = new File(System.getProperty("user.dir") + "/OwnCommands");
+
+        if(ownCommandFolder.listFiles() == null) {
+            return;
+        }
+
         for(File f : ownCommandFolder.listFiles())
         {
             if(f.getName().equals(".DS_Store") || f.getName().equals("ReadMe"))
