@@ -11,22 +11,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.drone_controller);
 
         this.droneThread = new DroneThread();
         droneThread.start();
-    }
 
-    public void btn_takeoff(View view) {
-        droneThread.executeCommand("start");
-    }
+        View takeOffBtn = findViewById(R.id.btn_takeoff);
+        takeOffBtn.setOnClickListener(btn -> droneThread.executeCommand("start"));
 
-    public void btn_land(View view) {
-        droneThread.executeCommand("land");
-    }
+        View landBtn = findViewById(R.id.btn_land);
+        landBtn.setOnClickListener(btn -> droneThread.executeCommand("land"));
 
-    public void btn_emergency(View view) {
-        droneThread.executeCommand("stop");
+        View emergencyBtn = findViewById(R.id.btn_emergency);
+        emergencyBtn.setOnClickListener(btn -> droneThread.executeCommand("stop"));
+
     }
 
 }
